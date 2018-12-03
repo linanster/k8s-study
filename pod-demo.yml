@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-demo
+  namespace: default
+  labels: 
+    app: myqpp
+    tier: frontend
+  annotations: 
+    example.com/created-by: "linanster"
+spec:
+# nodeSelector:
+#   disktype: ssd
+  nodeName: c7-node3
+  restartPolicy: Always
+  containers:
+  - name: myapp-v1
+    image: linanster/myapp:v1
+    imagePullPolicy: IfNotPresent
+    ports:
+    - name: http
+      containerPort: 80
+    - name: https
+      containerPort: 443
+#   command: ["/bin/sh"]
+#   args: 
+# - name: myapp-v2
+#   image: linanster/myapp:v2
