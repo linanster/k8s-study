@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-demo
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      label1: L1
+      label2: L2
+  template:
+    metadata:
+      name: pod-myapp
+      labels:
+        label1: L1
+        label2: L2
+    spec:
+      containers:
+      - name: container-myapp
+        image: linanster/myapp:v1
