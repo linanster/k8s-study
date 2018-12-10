@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-volume-hostpath
+  namespace: default
+spec:
+  volumes:
+  - name: volume-html
+    hostPath: 
+      path: /data/volume
+      type: DirectoryOrCreate
+  containers:
+  - name: container-vol-hostpath
+    image: nginx:1.14-alpine
+    volumeMounts:
+    - name: volume-html
+      mountPath: /usr/share/nginx/html/
+

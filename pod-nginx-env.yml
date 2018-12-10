@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-nginx
+  namespace: default
+spec:
+  containers:
+  - name: container-myapp
+    image: linanster/myapp:v1
+    imagePullPolicy: IfNotPresent
+    env:
+      - name: MY_NGINX_PORT
+        #value "8080"
+        valueFrom:
+          configMapKeyRef:
+            name: configmap-nginx
+            key: PORT
